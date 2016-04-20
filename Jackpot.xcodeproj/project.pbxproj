@@ -13,6 +13,8 @@
 		416597421CC7BC110052673E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 416597401CC7BC110052673E /* Main.storyboard */; };
 		416597441CC7BC110052673E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 416597431CC7BC110052673E /* Assets.xcassets */; };
 		416597471CC7BC110052673E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 416597451CC7BC110052673E /* LaunchScreen.storyboard */; };
+		416597501CC7C2B70052673E /* TicketsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4165974F1CC7C2B70052673E /* TicketsTableViewController.m */; };
+		416597531CC7C4C30052673E /* Ticket.m in Sources */ = {isa = PBXBuildFile; fileRef = 416597521CC7C4C30052673E /* Ticket.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,10 @@
 		416597431CC7BC110052673E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		416597461CC7BC110052673E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		416597481CC7BC110052673E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4165974E1CC7C2B70052673E /* TicketsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TicketsTableViewController.h; sourceTree = "<group>"; };
+		4165974F1CC7C2B70052673E /* TicketsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TicketsTableViewController.m; sourceTree = "<group>"; };
+		416597511CC7C4C30052673E /* Ticket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ticket.h; sourceTree = "<group>"; };
+		416597521CC7C4C30052673E /* Ticket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ticket.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,10 @@
 				4165973B1CC7BC110052673E /* AppDelegate.m */,
 				4165973D1CC7BC110052673E /* ViewController.h */,
 				4165973E1CC7BC110052673E /* ViewController.m */,
+				4165974E1CC7C2B70052673E /* TicketsTableViewController.h */,
+				4165974F1CC7C2B70052673E /* TicketsTableViewController.m */,
+				416597511CC7C4C30052673E /* Ticket.h */,
+				416597521CC7C4C30052673E /* Ticket.m */,
 				416597401CC7BC110052673E /* Main.storyboard */,
 				416597431CC7BC110052673E /* Assets.xcassets */,
 				416597451CC7BC110052673E /* LaunchScreen.storyboard */,
@@ -150,7 +160,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				416597531CC7C4C30052673E /* Ticket.m in Sources */,
 				4165973F1CC7BC110052673E /* ViewController.m in Sources */,
+				416597501CC7C2B70052673E /* TicketsTableViewController.m in Sources */,
 				4165973C1CC7BC110052673E /* AppDelegate.m in Sources */,
 				416597391CC7BC110052673E /* main.m in Sources */,
 			);
