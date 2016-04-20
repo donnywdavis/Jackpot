@@ -25,6 +25,7 @@
         picks = [NSMutableArray array]; // another option to [[alloc] init]
         self.winner = NO;
         self.payout = @"";
+        self.ticketPrice = 1;
     }
     return self;
 }
@@ -36,6 +37,9 @@
     do {
         [aTicket createPick];
     } while (aTicket.picks.count < 6);
+    
+    // sort the picks before returning
+    [aTicket sortPicks];
     
     return aTicket;
     
@@ -74,6 +78,12 @@
     return [picks copy];
 }
 
+- (void)sortPicks {
+    
+    picks = [[picks sortedArrayUsingSelector:@selector(compare:)] mutableCopy];
+    
+}
+
 - (void)compareWithTicket:(Ticket *)anotherTicket {
     NSArray *possibleWinningNumbers = anotherTicket.picks;
     int matchCount = 0;
@@ -89,32 +99,33 @@
     switch (matchCount) {
         case 1:
             self.winner = YES;
-            self.payout = @"$1";
+            self.payout = @"1";
             break;
             
         case 2:
             self.winner = YES;
-            self.payout = @"$1";
+            self.payout = @"1";
             break;
             
         case 3:
             self.winner = YES;
-            self.payout = @"$5";
+            self.payout = @"5";
         
         case 4:
             self.winner = YES;
-            self.payout = @"$10";
+            self.payout = @"10";
             
         case 5:
             self.winner = YES;
-            self.payout = @"$100";
+            self.payout = @"100";
             
         case 6:
             self.winner = YES;
-            self.payout = @"$1000";
+            self.payout = @"1000";
             
         default:
-            self.payout = @"sorry please play again";
+            self.winner = NO;
+            self.payout = @"0";
             break;
     }
 }

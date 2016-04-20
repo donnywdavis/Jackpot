@@ -12,6 +12,7 @@
 @interface TicketsTableViewController () {
     
     NSMutableArray *tickets;
+    int totalWinnings, totalSpent;
     
 }
 
@@ -32,6 +33,9 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     tickets = [[NSMutableArray alloc] init];
+    totalWinnings = 0;
+    totalSpent = 0;
+    self.title = @"Won: $0 Spent: $0";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,12 +61,17 @@
     Ticket *aTicket = tickets[indexPath.row];
     
     cell.textLabel.text = [aTicket description];
-    if ([aTicket.payout containsString:@"sorry please play again"]) {
-        cell.detailTextLabel.textColor = [UIColor redColor];
+    if ([aTicket.payout isEqualToString:@""]) {
+        cell.detailTextLabel.text = @"";
     } else {
-        cell.detailTextLabel.textColor = [UIColor greenColor];
+        if (aTicket.winner) {
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"$%@", aTicket.payout];
+            cell.detailTextLabel.textColor = [UIColor greenColor];
+        } else {
+            cell.detailTextLabel.text = @"$0";
+            cell.detailTextLabel.textColor = [UIColor redColor];
+        }
     }
-    cell.detailTextLabel.text = aTicket.payout;
     
     return cell;
 }
@@ -73,6 +82,8 @@
     Ticket *aTicket = [Ticket ticketUsingQuickPick];
     [tickets addObject:aTicket];
     
+    totalSpent += aTicket.ticketPrice;
+    self.title = [NSString stringWithFormat:@"Won: $%d Spent: $%d", totalWinnings, totalSpent];
     [self.tableView reloadData];
 }
 
@@ -80,10 +91,13 @@
     // Create a winning ticket
     Ticket *winningTicket = [Ticket ticketUsingQuickPick];
     
+    totalWinnings = 0;
     for (Ticket *ourTicket in tickets) {
         [ourTicket compareWithTicket:winningTicket];
+        totalWinnings += [ourTicket.payout intValue];
     }
     
+    self.title = [NSString stringWithFormat:@"Won: $%d Spent: $%d", totalWinnings, totalSpent];
     [self.tableView reloadData];
 }
 

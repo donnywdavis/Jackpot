@@ -21,9 +21,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1254" y="739"/>
+            <point key="canvasLocation" x="1129" y="739"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Lotto Picks-->
         <scene sceneID="8Ga-AO-gRs">
             <objects>
                 <tableViewController id="snf-vA-Y55" customClass="TicketsTableViewController" sceneMemberID="viewController">
@@ -63,7 +63,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="gu4-Il-uV3">
+                    <navigationItem key="navigationItem" title="Lotto Picks" id="gu4-Il-uV3">
                         <barButtonItem key="leftBarButtonItem" title="Check Winners" id="7PY-cS-vly">
                             <connections>
                                 <action selector="checkWinners:" destination="snf-vA-Y55" id="WWP-f5-wEZ"/>
@@ -79,7 +79,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jbv-kC-UBC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="490" y="739"/>
+            <point key="canvasLocation" x="368" y="739"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="n6j-xR-Dn9">
