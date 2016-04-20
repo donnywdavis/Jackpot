@@ -9,7 +9,7 @@ Quick pick is defined as a lottery number that is randomly generated. A lottery 
 Create a Class called Ticket that stores the first and last name of the ticket holder as well as the actual lottery ticket. This must be a separate class in your project.
 
 ###Objectives
-* [ ] Create a UIBarButtonItem "CheckWinners" on the left that creates a winning ticket and compares all of the current tickets to that winner and updates the cells.
-* [ ] If a ticket is a winner make the payout text green.
-* [ ] If a ticket is not a winner, make the payout text red.
+* [x] Create a UIBarButtonItem "CheckWinners" on the left that creates a winning ticket and compares all of the current tickets to that winner and updates the cells.
+* [x] If a ticket is a winner make the payout text green.
+* [x] If a ticket is not a winner, make the payout text red.
 * [ ] Sort the numbers in each ticket so that they are in ascending order.
