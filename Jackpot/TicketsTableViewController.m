@@ -77,6 +77,7 @@
 
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    self.title = @"Tickets";
     if ([segue.identifier isEqualToString:@"WinnerWinnerChickenDinner"]) {
         WinningTicketViewController *wtvc = (WinningTicketViewController *)segue.destinationViewController;
         wtvc.delegate = self;
@@ -107,6 +108,11 @@
         [ourTicket compareWithTicket:winningTicket];
         totalWinnings += ourTicket.payout;
     }
+    
+    // Let's sort our array to show all of our winnings at the top
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"payout" ascending:NO];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    tickets = [[tickets sortedArrayUsingDescriptors:sortDescriptors] mutableCopy];
     
     self.title = [NSString stringWithFormat:@"Won: $%d Spent: $%d", totalWinnings, totalSpent];
     [self.tableView reloadData];
