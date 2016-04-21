@@ -111,18 +111,22 @@
         case 3:
             self.winner = YES;
             self.payout = 5;
+            break;
         
         case 4:
             self.winner = YES;
             self.payout = 10;
+            break;
             
         case 5:
             self.winner = YES;
             self.payout = 100;
+            break;
             
         case 6:
             self.winner = YES;
             self.payout = 1000;
+            break;
             
         default:
             self.winner = NO;
