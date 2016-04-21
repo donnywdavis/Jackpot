@@ -131,6 +131,10 @@
 }
 
 - (NSString *)description {
+//    NSString *descriptionFormat = [[NSString alloc] init];
+//    for (NSNumber *pick in picks) {
+//        <#statements#>
+//    }
     return [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@", picks[0], picks[1], picks[2], picks[3], picks[4], picks[5]];
 }
 

@@ -35,7 +35,6 @@
     tickets = [[NSMutableArray alloc] init];
     totalWinnings = 0;
     totalSpent = 0;
-    self.title = @"Won: $0 Spent: $0";
 }
 
 - (void)didReceiveMemoryWarning {

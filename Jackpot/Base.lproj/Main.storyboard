@@ -3,12 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Winning Ticket-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                <viewController title="Winning Ticket" id="BYZ-38-t0r" customClass="WinningTicketViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,14 +17,34 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DKe-BR-c20">
+                                <rect key="frame" x="20" y="192" width="560" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="2Bb-xY-vUY"/>
+                                </constraints>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56d-Yi-GY8">
+                                <rect key="frame" x="251" y="416" width="98" height="30"/>
+                                <state key="normal" title="Check Tickets"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="DKe-BR-c20" secondAttribute="trailing" id="8IO-6v-Y3O"/>
+                            <constraint firstItem="DKe-BR-c20" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Lnd-7A-8CN"/>
+                            <constraint firstItem="56d-Yi-GY8" firstAttribute="top" secondItem="DKe-BR-c20" secondAttribute="bottom" constant="8" id="Y07-a6-0KN"/>
+                            <constraint firstItem="DKe-BR-c20" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="kHQ-kQ-sWa"/>
+                            <constraint firstItem="56d-Yi-GY8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yZp-nl-EqO"/>
+                            <constraint firstItem="DKe-BR-c20" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="z4M-2n-0fW"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1129" y="739"/>
         </scene>
-        <!--Lotto Picks-->
+        <!--Tickets-->
         <scene sceneID="8Ga-AO-gRs">
             <objects>
                 <tableViewController id="snf-vA-Y55" customClass="TicketsTableViewController" sceneMemberID="viewController">
@@ -43,7 +64,7 @@
                                             <rect key="frame" x="15" y="12" width="66.5" height="19.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Payout" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gpx-2r-NsD">
@@ -63,10 +84,10 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Lotto Picks" id="gu4-Il-uV3">
-                        <barButtonItem key="leftBarButtonItem" title="Check Winners" id="7PY-cS-vly">
+                    <navigationItem key="navigationItem" title="Tickets" id="gu4-Il-uV3">
+                        <barButtonItem key="leftBarButtonItem" title="Create Winner" id="7PY-cS-vly">
                             <connections>
-                                <action selector="checkWinners:" destination="snf-vA-Y55" id="WWP-f5-wEZ"/>
+                                <segue destination="BYZ-38-t0r" kind="show" id="fl7-xK-9KD"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0XP-90-0Cb">
