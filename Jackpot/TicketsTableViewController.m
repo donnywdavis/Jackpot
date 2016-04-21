@@ -97,7 +97,9 @@
     
     totalSpent += aTicket.ticketPrice;
     self.title = [NSString stringWithFormat:@"Won: $%d Spent: $%d", totalWinnings, totalSpent];
-    [self.tableView reloadData];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(tickets.count - 1) inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)checkWinners:(NSArray *)pickedNumbers {
@@ -114,6 +116,9 @@
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"payout" ascending:NO];
     NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     tickets = [[tickets sortedArrayUsingDescriptors:sortDescriptors] mutableCopy];
+    
+    // Let's color the numbers that we matched correctly
+    
     
     self.title = [NSString stringWithFormat:@"Won: $%d Spent: $%d", totalWinnings, totalSpent];
     [self.tableView reloadData];
