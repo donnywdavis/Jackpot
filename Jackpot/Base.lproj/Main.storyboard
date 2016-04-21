@@ -23,10 +23,25 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="216" id="2Bb-xY-vUY"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="YK0-Ji-TSb"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="EzW-aa-qXZ"/>
+                                </connections>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XbU-Im-BQg">
+                                <rect key="frame" x="245" y="154" width="110" height="30"/>
+                                <state key="normal" title="Generate Ticket"/>
+                                <connections>
+                                    <action selector="generateTicket:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pId-Ng-PXa"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="56d-Yi-GY8">
                                 <rect key="frame" x="251" y="416" width="98" height="30"/>
                                 <state key="normal" title="Check Tickets"/>
+                                <connections>
+                                    <action selector="checkTicket:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PKh-yc-YFc"/>
+                                    <segue destination="SsO-IW-QmR" kind="unwind" unwindAction="returnToTickets:" id="QPu-cU-psw"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -34,13 +49,20 @@
                             <constraint firstAttribute="trailingMargin" secondItem="DKe-BR-c20" secondAttribute="trailing" id="8IO-6v-Y3O"/>
                             <constraint firstItem="DKe-BR-c20" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Lnd-7A-8CN"/>
                             <constraint firstItem="56d-Yi-GY8" firstAttribute="top" secondItem="DKe-BR-c20" secondAttribute="bottom" constant="8" id="Y07-a6-0KN"/>
+                            <constraint firstItem="XbU-Im-BQg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ftd-El-uU0"/>
+                            <constraint firstItem="DKe-BR-c20" firstAttribute="top" secondItem="XbU-Im-BQg" secondAttribute="bottom" constant="8" id="hw7-5T-UEY"/>
                             <constraint firstItem="DKe-BR-c20" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="kHQ-kQ-sWa"/>
                             <constraint firstItem="56d-Yi-GY8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yZp-nl-EqO"/>
                             <constraint firstItem="DKe-BR-c20" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="z4M-2n-0fW"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="checkTicketButton" destination="56d-Yi-GY8" id="Ov1-fc-XXa"/>
+                        <outlet property="pickerView" destination="DKe-BR-c20" id="7Zi-Cy-CeR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="SsO-IW-QmR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1129" y="739"/>
         </scene>
@@ -87,7 +109,7 @@
                     <navigationItem key="navigationItem" title="Tickets" id="gu4-Il-uV3">
                         <barButtonItem key="leftBarButtonItem" title="Create Winner" id="7PY-cS-vly">
                             <connections>
-                                <segue destination="BYZ-38-t0r" kind="show" id="fl7-xK-9KD"/>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="WinnerWinnerChickenDinner" id="fl7-xK-9KD"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0XP-90-0Cb">
