@@ -7,9 +7,10 @@
 //
 
 #import "TicketsTableViewController.h"
+#import "WinningTicketViewController.h"
 #import "Ticket.h"
 
-@interface TicketsTableViewController () {
+@interface TicketsTableViewController () <WinningTicketViewControllerDelegate> {
     
     NSMutableArray *tickets;
     int totalWinnings, totalSpent;
@@ -17,7 +18,7 @@
 }
 
 - (IBAction)createTicket:(id)sender;
-- (IBAction)checkWinners:(id)sender;
+- (void)checkWinners:(NSArray *)pickedNumbers;
 
 @end
 
@@ -42,6 +43,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)returnThePickedNumbers:(NSArray *)pickedNumbers {
+    [self checkWinners:pickedNumbers];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -60,19 +65,26 @@
     Ticket *aTicket = tickets[indexPath.row];
     
     cell.textLabel.text = [aTicket description];
-    if ([aTicket.payout isEqualToString:@""]) {
-        cell.detailTextLabel.text = @"";
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"$%d", aTicket.payout];
+    if (aTicket.winner) {
+        cell.detailTextLabel.textColor = [UIColor greenColor];
     } else {
-        if (aTicket.winner) {
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"$%@", aTicket.payout];
-            cell.detailTextLabel.textColor = [UIColor greenColor];
-        } else {
-            cell.detailTextLabel.text = @"$0";
-            cell.detailTextLabel.textColor = [UIColor redColor];
-        }
+        cell.detailTextLabel.textColor = [UIColor redColor];
     }
     
     return cell;
+}
+
+#pragma mark - Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"WinnerWinnerChickenDinner"]) {
+        WinningTicketViewController *wtvc = (WinningTicketViewController *)segue.destinationViewController;
+        wtvc.delegate = self;
+    }
+}
+
+- (IBAction)returnToTickets:(UIStoryboardSegue *)segue {
+    
 }
 
 #pragma mark - Bar button item actions
@@ -86,14 +98,14 @@
     [self.tableView reloadData];
 }
 
-- (IBAction)checkWinners:(id)sender {
+- (void)checkWinners:(NSArray *)pickedNumbers {
     // Create a winning ticket
-    Ticket *winningTicket = [Ticket ticketUsingQuickPick];
+    Ticket *winningTicket = [Ticket ticketUsingArray:pickedNumbers];
     
     totalWinnings = 0;
     for (Ticket *ourTicket in tickets) {
         [ourTicket compareWithTicket:winningTicket];
-        totalWinnings += [ourTicket.payout intValue];
+        totalWinnings += ourTicket.payout;
     }
     
     self.title = [NSString stringWithFormat:@"Won: $%d Spent: $%d", totalWinnings, totalSpent];

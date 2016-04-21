@@ -10,4 +10,6 @@
 
 @interface TicketsTableViewController : UITableViewController
 
+- (IBAction)returnToTickets:(UIStoryboardSegue *)segue;
+
 @end
