@@ -28,6 +28,7 @@
     hasPickedAllNumbers = NO;
     pickedNumbers = [@[[NSNumber numberWithInt:0], [NSNumber numberWithInt:0], [NSNumber numberWithInt:0], [NSNumber numberWithInt:0], [NSNumber numberWithInt:0], [NSNumber numberWithInt:0]] mutableCopy];
     self.checkTicketButton.enabled = NO;
+    [self.navigationController setToolbarHidden:YES];
 }
 
 - (void)didReceiveMemoryWarning {

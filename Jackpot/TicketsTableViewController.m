@@ -17,6 +17,8 @@
     
 }
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *wonSpentLabel;
+
 - (IBAction)createTicket:(id)sender;
 - (void)checkWinners:(NSArray *)pickedNumbers;
 
@@ -27,15 +29,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     tickets = [[NSMutableArray alloc] init];
     totalWinnings = 0;
     totalSpent = 0;
+    [self.navigationController setToolbarHidden:NO];
+    self.wonSpentLabel.title = @"Won: $0 Spent: $0";
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController setToolbarHidden:NO];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -77,8 +79,6 @@
 
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    self.title = @"Tickets";
-    
     if ([segue.identifier isEqualToString:@"WinnerWinnerChickenDinner"]) {
         WinningTicketViewController *wtvc = (WinningTicketViewController *)segue.destinationViewController;
         wtvc.delegate = self;
@@ -96,7 +96,7 @@
     [tickets addObject:aTicket];
     
     totalSpent += aTicket.ticketPrice;
-    self.title = [NSString stringWithFormat:@"Won: $%d Spent: $%d", totalWinnings, totalSpent];
+    self.wonSpentLabel.title = [NSString stringWithFormat:@"Won: $%d Spent: $%d", totalWinnings, totalSpent];
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:(tickets.count - 1) inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -120,7 +120,7 @@
     // Let's color the numbers that we matched correctly
     
     
-    self.title = [NSString stringWithFormat:@"Won: $%d Spent: $%d", totalWinnings, totalSpent];
+    self.wonSpentLabel.title = [NSString stringWithFormat:@"Won: $%d Spent: $%d", totalWinnings, totalSpent];
     [self.tableView reloadData];
 }
 
